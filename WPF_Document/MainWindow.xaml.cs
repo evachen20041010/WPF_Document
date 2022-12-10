@@ -24,5 +24,11 @@ namespace WPF_Document
         {
             InitializeComponent();
         }
+
+        private void openButton_Click(object sender, RoutedEventArgs e)
+        {
+            MyDocumentViewer myDocumentViewer = new MyDocumentViewer();
+            myDocumentViewer.Show();
+        }
     }
 }
