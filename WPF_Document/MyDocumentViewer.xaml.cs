@@ -22,6 +22,13 @@ namespace WPF_Document
         public MyDocumentViewer()
         {
             InitializeComponent();
+            foreach (FontFamily fontfamily in Fonts.SystemFontFamilies)
+            {
+                cmbFontFamily.Items.Add(fontfamily);
+            }
+            cmbFontFamily.SelectedIndex = 0;
+            cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 32, 40, 50, 60, 80, 100 };
+            cmbFontSize.SelectedIndex = 4;
         }
 
         private void rtbEditor_SelectionChanged(object sender, RoutedEventArgs e)
@@ -34,6 +41,28 @@ namespace WPF_Document
 
             property = rtbEditor.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
             btnUnderline.IsChecked = (property != DependencyProperty.UnsetValue) && (property.Equals(TextDecorations.Underline));
+
+            property = rtbEditor.Selection.GetPropertyValue(Inline.FontFamilyProperty);
+            cmbFontFamily.SelectedItem = property;
+
+            property = rtbEditor.Selection.GetPropertyValue(Inline.FontSizeProperty);
+            cmbFontSize.SelectedItem = property;
+        }
+
+        private void cmbFontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbFontFamily.SelectedItem != null)
+            {
+                rtbEditor.Selection.ApplyPropertyValue(TextElement.FontFamilyProperty, cmbFontFamily.SelectedItem);
+            }
+        }
+
+        private void cmbFontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbFontSize.SelectedItem != null)
+            {
+                rtbEditor.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, cmbFontSize.SelectedItem);
+            }
         }
     }
 }

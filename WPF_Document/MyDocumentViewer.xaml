@@ -11,7 +11,7 @@
             <ToolBar Width="150" Height="40">
                 <Button x:Name="openButton" Content="Open" Width="40" Height="40" />
             </ToolBar>
-            <ToolBar Width="300">
+            <ToolBar Width="400">
                 <ToggleButton x:Name="btnBold" Command="EditingCommands.ToggleBold" Width="40" Height="40">
                     <Image Height="35" Width="35" Source="/bold.png"/>
                 </ToggleButton>
@@ -21,6 +21,9 @@
                 <ToggleButton x:Name="btnUnderline" Command="EditingCommands.ToggleUnderline" Width="40" Height="40">
                     <Image Height="35" Width="35" Source="/underline-text.png"/>
                 </ToggleButton>
+                <Separator/>
+                <ComboBox x:Name="cmbFontFamily" Width="120" Height="25" HorizontalAlignment="Left" SelectionChanged="cmbFontFamily_SelectionChanged"/>
+                <ComboBox x:Name="cmbFontSize" Width="80" Height="25" HorizontalAlignment="Left" SelectionChanged="cmbFontSize_SelectionChanged"/>
             </ToolBar>
         </ToolBarTray>
         <RichTextBox x:Name="rtbEditor" Background="#FFFDEFBF" SelectionChanged="rtbEditor_SelectionChanged">
