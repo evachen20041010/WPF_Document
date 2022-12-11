@@ -15,6 +15,7 @@ namespace WPF_Document
     public partial class MyDocumentViewer : Window
     {
         Color fontColor = Colors.Black;
+        Color backgroundColor = Colors.Transparent;
         public MyDocumentViewer()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace WPF_Document
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 24, 32, 40, 50, 60, 80, 100 };
             cmbFontSize.SelectedIndex = 4;
             fontColorPicker.SelectedColor = fontColor;
+            backgroundColorPicker.SelectedColor = backgroundColor;
         }
 
         private void Editor_SelectionChanged(object sender, RoutedEventArgs e)
@@ -75,10 +77,17 @@ namespace WPF_Document
             rtbEditor.Selection.ApplyPropertyValue(TextElement.ForegroundProperty, colorBrush);
         }
 
+        private void BackgroundColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            backgroundColor = (Color)e.NewValue;
+            SolidColorBrush colorBrush = new SolidColorBrush(backgroundColor);
+            rtbEditor.Selection.ApplyPropertyValue(TextElement.BackgroundProperty, colorBrush);
+        }
+
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Rich Text Format file|*.ref|所有檔案|*.*";
+            fileDialog.Filter = "Rich Text Format file|*.ref|html檔案|*.html|所有檔案|*.*";
             if (fileDialog.ShowDialog() == true)
             {
                 FileStream fs = new FileStream(fileDialog.FileName, FileMode.Open);
@@ -90,7 +99,7 @@ namespace WPF_Document
         private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "Rich Text Format file|*.ref|所有檔案|*.*";
+            fileDialog.Filter = "Rich Text Format file|*.ref|html檔案|*.html|所有檔案|*.*";
             if (fileDialog.ShowDialog() == true)
             {
                 FileStream fs = new FileStream(fileDialog.FileName, FileMode.Create);
@@ -109,5 +118,6 @@ namespace WPF_Document
         {
             rtbEditor.Document.Blocks.Clear();
         }
+
     }
 }

@@ -6,15 +6,15 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:WPF_Document"
         mc:Ignorable="d"
-        Title="MyDocumentViewer" Height="450" Width="800">
+        Title="MyDocumentViewer" Height="450" Width="820">
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" />
         <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed"/>
         <CommandBinding Command="ApplicationCommands.New" Executed="New_Executed"/>
     </Window.CommandBindings>
     <DockPanel>
-        <ToolBarTray Height="40" Background="#FFD7B3FD" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Width="800">
-            <ToolBar Width="150" Height="40">
+        <ToolBarTray Height="40" Background="#FFD7B3FD" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Width="820">
+            <ToolBar Width="150">
                 <Button x:Name="openButton" Command="ApplicationCommands.Open" Width="40" Height="40">
                     <Image Height="30" Width="30" Source="/open-file.png"/>
                 </Button>
@@ -25,20 +25,21 @@
                     <Image Height="30" Width="30" Source="/new-document.png"/>
                 </Button>
             </ToolBar>
-            <ToolBar Width="500">
+            <ToolBar Width="580">
                 <ToggleButton x:Name="btnBold" Command="EditingCommands.ToggleBold" Width="40" Height="40">
-                    <Image Height="35" Width="35" Source="/bold.png"/>
+                    <Image Height="30" Width="30" Source="/bold.png"/>
                 </ToggleButton>
                 <ToggleButton x:Name="btnItalic" Command="EditingCommands.ToggleItalic" Width="40" Height="40">
-                    <Image Height="35" Width="35" Source="/italic.png"/>
+                    <Image Height="30" Width="30" Source="/italic.png"/>
                 </ToggleButton>
                 <ToggleButton x:Name="btnUnderline" Command="EditingCommands.ToggleUnderline" Width="40" Height="40">
-                    <Image Height="35" Width="35" Source="/underline-text.png"/>
+                    <Image Height="30" Width="30" Source="/underline-text.png"/>
                 </ToggleButton>
                 <Separator/>
                 <xctk:ColorPicker x:Name="fontColorPicker" Width="100" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" DisplayColorAndName="True" SelectedColorChanged="FontColorPicker_SelectedColorChanged"/>
                 <ComboBox x:Name="cmbFontFamily" Width="120" Height="25" HorizontalAlignment="Left" SelectionChanged="FontFamily_SelectionChanged"/>
                 <ComboBox x:Name="cmbFontSize" Width="80" Height="25" HorizontalAlignment="Left" SelectionChanged="FontSize_SelectionChanged"/>
+                <xctk:ColorPicker x:Name="backgroundColorPicker" Width="100" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" DisplayColorAndName="True" SelectedColorChanged="BackgroundColorPicker_SelectedColorChanged"/>
             </ToolBar>
             <ToolBar>
                 <Button x:Name="clearButton" Click="ClearButton_Click">
