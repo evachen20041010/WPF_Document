@@ -9,15 +9,27 @@
 
   <ItemGroup>
     <None Remove="bold.png" />
+    <None Remove="diskette.png" />
     <None Remove="italic-font.png" />
     <None Remove="italic.png" />
+    <None Remove="new-document.png" />
+    <None Remove="open-file.png" />
+    <None Remove="trash-can.png" />
     <None Remove="underline-text.png" />
     <None Remove="underlined-text.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="bold.png" />
+    <Resource Include="diskette.png" />
     <Resource Include="italic.png" />
+    <Resource Include="new-document.png" />
+    <Resource Include="open-file.png" />
+    <Resource Include="trash-can.png" />
     <Resource Include="underline-text.png" />
   </ItemGroup>
 
